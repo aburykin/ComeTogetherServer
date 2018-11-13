@@ -11,5 +11,10 @@ public class ComeTogetherApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ComeTogetherApplication.class);
+
+
+        System.out.println("\n\n***********************************************************");
+        System.out.println("\n***************  SERVER STARTED  **************************\n");
+        System.out.println("***********************************************************\n\n");
     }
 }
