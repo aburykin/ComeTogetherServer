@@ -14,6 +14,30 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <profiles>
+        <profile>
+            <id>db-drop-first</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <dropFirst>true</dropFirst>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+            <version>42.2.2</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -21,8 +45,31 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.6.2</version>
                 <configuration>
-                    <url>jdbc:h2:mem:default</url>
+
+                    <changeLogFile>/src/main/resources/db/liquibase/master.xml</changeLogFile>
+                    <url>jdbc:postgresql://127.0.0.1:5432/test_db</url>
+                    <driver>org.postgresql.Driver</driver>
+                    <username>maas</username>
+                    <password>maas</password>
+                    <outputDefaultSchema>true</outputDefaultSchema>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+
+                    <!--<changeLogFile>/src/main/resources/db/liquibase/master.xml</changeLogFile>-->
+                    <!--<driver>org.h2.Driver</driver>-->
+                    <!--<url>jdbc:h2:mem:default</url>-->
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <id>update_cometogether_schema</id>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+
+
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
