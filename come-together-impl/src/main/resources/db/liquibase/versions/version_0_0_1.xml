@@ -4,7 +4,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="1_create_meeting_table" author="Alex">
+    <!--<changeSet id="00001_init_sql" author="aburykin">-->
+        <!--<sqlFile path="001_init.sql" splitStatements="false" relativeToChangelogFile="true"/>-->
+    <!--</changeSet>-->
+
+    <changeSet id="1_base_tables" author="Alex">
         <createTable tableName="meeting">
             <column name="id" type="bigint"/>
             <column name="name" type="varchar(200)"/>
@@ -12,9 +16,18 @@
             <column name="time" type="time"/>
             <column name="description" type="varchar(2000)"/>
         </createTable>
+
+        <createTable tableName="app_user">
+            <column name="user_id" type="bigint"/>
+            <column name="phone_number" type="varchar(10)"/>
+            <column name="authorization_token" type="varchar(200)" />
+            <column name="first_name" type="varchar(200)"/>
+            <column name="last_name" type="varchar(200)"/>
+            <column name="birthday_date" type="timestamp"/>
+            <column name="age" type="int"/>
+        </createTable>
+
+        <addUniqueConstraint tableName="app_user" columnNames="authorization_token"/>
     </changeSet>
 
-    <changeSet id="2_create_meeting_table" author="Alex">
-
-    </changeSet>
 </databaseChangeLog>
