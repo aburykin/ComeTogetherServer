@@ -10,7 +10,7 @@
 
     <changeSet id="1_base_tables" author="Alex">
         <createTable tableName="meeting">
-            <column name="id" type="bigint"/>
+            <column name="id" type="bigserial"/>
             <column name="name" type="varchar(200)"/>
             <column name="place" type="varchar(200)"/>
             <column name="time" type="time"/>
@@ -18,7 +18,7 @@
         </createTable>
 
         <createTable tableName="app_user">
-            <column name="user_id" type="bigint"/>
+            <column name="user_id" type="bigserial"/>   <!-- создает последовательность -->
             <column name="phone_number" type="varchar(10)"/>
             <column name="authorization_token" type="varchar(200)" />
             <column name="first_name" type="varchar(200)"/>
@@ -28,6 +28,7 @@
         </createTable>
 
         <addUniqueConstraint tableName="app_user" columnNames="authorization_token"/>
+
     </changeSet>
 
 </databaseChangeLog>
