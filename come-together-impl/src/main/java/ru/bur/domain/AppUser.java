@@ -2,18 +2,17 @@ package ru.bur.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Data
+@Table(schema = "base_schema",name = "app_user")
 public class AppUser {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="app_user_user_id_seq")
+    @SequenceGenerator(name="app_user_user_id_seq", sequenceName="app_user_user_id_seq", allocationSize=1)
     private Long userId;
     @Column
     private String phoneNumber;

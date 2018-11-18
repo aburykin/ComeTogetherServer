@@ -30,14 +30,7 @@
             </build>
         </profile>
     </profiles>
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-            <version>42.2.2</version>
-        </dependency>
-    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -70,11 +63,9 @@
                             <goal>update</goal>
                         </goals>
                     </execution>
-
                 </executions>
-
-
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
