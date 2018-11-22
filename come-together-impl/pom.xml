@@ -38,19 +38,17 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.6.2</version>
                 <configuration>
-
-                    <changeLogFile>/src/main/resources/db/liquibase/master.xml</changeLogFile>
-                    <url>jdbc:postgresql://127.0.0.1:5432/test_db</url>
-                    <driver>org.postgresql.Driver</driver>
-                    <username>maas</username>
-                    <password>maas</password>
-                    <outputDefaultSchema>true</outputDefaultSchema>
-                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-
                     <!--<changeLogFile>/src/main/resources/db/liquibase/master.xml</changeLogFile>-->
                     <!--<driver>org.h2.Driver</driver>-->
                     <!--<url>jdbc:h2:mem:default</url>-->
 
+                    <changeLogFile>/src/main/resources/db/liquibase/master.xml</changeLogFile>
+                    <url>jdbc:postgresql://127.0.0.1:5432/test_db</url>
+                    <driver>org.postgresql.Driver</driver>
+                    <username>test</username>
+                    <password>test</password>
+                    <outputDefaultSchema>true</outputDefaultSchema>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <defaultSchemaName>base_schema</defaultSchemaName>
                     <changelogSchemaName>liqubase_schema</changelogSchemaName>
 
@@ -74,6 +72,13 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>ru.bur.come-together</groupId>
             <artifactId>come-together-api</artifactId>
