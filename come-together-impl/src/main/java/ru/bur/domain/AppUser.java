@@ -14,9 +14,9 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="app_user_user_id_seq")
     @SequenceGenerator(name="app_user_user_id_seq", sequenceName="app_user_user_id_seq", allocationSize=1)
     private Long userId;
-    @Column
+    @Column(unique = true)
     private String phoneNumber;
-    @Column
+    @Column(unique = true)
     private String authorizationToken;
     @Column
     private String firstName;
