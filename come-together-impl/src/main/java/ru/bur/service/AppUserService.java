@@ -12,7 +12,7 @@ import ru.bur.repository.UserRepository;
 public class AppUserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public AppUser userAuth(String phoneNumber) {
         AppUser appUser = userRepository.findByPhoneNumber(phoneNumber);

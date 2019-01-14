@@ -1,4 +1,4 @@
-package ru.bur;
+package ru.bur.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

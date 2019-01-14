@@ -13,7 +13,7 @@
             <column name="id" type="bigserial"/>
             <column name="name" type="varchar(200)"/>
             <column name="place" type="varchar(200)"/>
-            <column name="time" type="time"/>
+            <!--<column name="local_date_time" type="time"/>-->
             <column name="description" type="varchar(2000)"/>
         </createTable>
 

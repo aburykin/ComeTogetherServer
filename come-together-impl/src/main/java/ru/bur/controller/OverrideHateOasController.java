@@ -1,4 +1,4 @@
-package ru.bur.repository;
+package ru.bur.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.bur.domain.AppUser;
+import ru.bur.repository.UserRepository;
 
 /**
  * Created by Sasha on 24.11.2018.
  */
-@RepositoryRestController
+
+//@RepositoryRestController
 public class OverrideHateOasController {
 
     @Autowired

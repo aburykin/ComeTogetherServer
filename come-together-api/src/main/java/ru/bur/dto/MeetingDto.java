@@ -13,6 +13,6 @@ public class MeetingDto {
     private Long id;
     private String name;
     private String place;
-    private LocalTime localDate;
+    private String description;
 
 }

@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
@@ -13,6 +14,7 @@ import ru.bur.dto.AuthDto;
  */
 
 @SpringBootTest
+@Ignore
 public class AppUserControllerTest {
 
     @Test
