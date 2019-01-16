@@ -9,6 +9,5 @@ import lombok.Data;
 public class AuthDto {
 
     private String phoneNumber;
-    private String authorization_token;
 
 }

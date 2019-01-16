@@ -25,4 +25,9 @@ public class AppUserService {
         }
         return appUser;
     }
+
+    public AppUser getAppUserByToken(String token){
+        AppUser appUser = userRepository.findByAuthorizationToken(token);
+        return appUser;
+    }
 }

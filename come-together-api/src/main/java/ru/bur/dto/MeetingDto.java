@@ -2,8 +2,6 @@ package ru.bur.dto;
 
 import lombok.Data;
 
-import java.time.LocalTime;
-
 /**
  * Created by Alexander Ushakov on 05.11.2018.
  */

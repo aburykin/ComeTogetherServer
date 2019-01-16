@@ -9,6 +9,8 @@ public interface UserRepository extends CrudRepository<AppUser, Long> {
 
     AppUser findByPhoneNumber(String phoneNumber);
 
+    AppUser findByAuthorizationToken(String phoneNumber);
+
 }
 
 /*
