@@ -20,7 +20,6 @@ public class AuthController {
     private AppUserService appUserService;
 
     @PostMapping
-    @ResponseStatus
     public AppUserDto userAuth(@RequestBody AuthDto authDto) {
         log.info(String.format("userAuth() authDto=%s", authDto));
         String phoneNumber = authDto.getPhoneNumber();
