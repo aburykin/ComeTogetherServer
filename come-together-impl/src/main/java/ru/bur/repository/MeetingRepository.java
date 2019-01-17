@@ -2,8 +2,9 @@ package ru.bur.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Repository;
 import ru.bur.domain.Meeting;
+
+import java.util.List;
 
 /**
  * Created by Alexander Ushakov on 05.11.2018.
@@ -11,4 +12,11 @@ import ru.bur.domain.Meeting;
 
 @RepositoryRestResource
 public interface MeetingRepository extends CrudRepository<Meeting, Long> {
+
+    @Override
+    List<Meeting> findAll();
+
+    @Override
+    Meeting save(Meeting meeting);
+
 }

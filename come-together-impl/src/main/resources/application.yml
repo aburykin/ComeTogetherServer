@@ -1,6 +1,6 @@
 spring:
   hateoas:
-    use-hal-as-default-json-media-type=false
+    use-hal-as-default-json-media-type: false
   datasource:
     url: jdbc:postgresql://127.0.0.1:5432/test_db?currentSchema=base_schema
     username: test
@@ -8,13 +8,16 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  data:
+    rest:
+      base-path: hateoas
+
 logging:
 level:
 org:
 springframework:
 web:filter:
 CommonsRequestLoggingFilter: DEBUG  # не работает
-
 
 
 

@@ -27,6 +27,16 @@
             <column name="age" type="int"/>
         </createTable>
 
+        <createTable tableName="app_user">
+            <column name="user_id" type="bigserial"/>   <!-- создает последовательность -->
+            <column name="phone_number" type="varchar(10)"/>
+            <column name="authorization_token" type="varchar(200)" />
+            <column name="first_name" type="varchar(200)"/>
+            <column name="last_name" type="varchar(200)"/>
+            <column name="birthday_date" type="timestamp"/>
+            <column name="age" type="int"/>
+        </createTable>
+
         <addUniqueConstraint tableName="app_user" columnNames="authorization_token"/>
 
     </changeSet>
