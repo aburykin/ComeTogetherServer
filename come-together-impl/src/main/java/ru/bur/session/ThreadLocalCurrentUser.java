@@ -1,6 +1,6 @@
 package ru.bur.session;
 
-import ru.bur.domain.AppUser;
+import ru.bur.domain.db.tables.pojos.AppUser;
 
 public class ThreadLocalCurrentUser {
 

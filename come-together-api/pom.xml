@@ -9,12 +9,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <!--<parent>-->
-        <!--<groupId>ru.bur</groupId>-->
-        <!--<artifactId>come-together-server</artifactId>-->
-        <!--<version>0.0.1-SNAPSHOT</version>-->
-    <!--</parent>-->
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,6 +1,6 @@
 package ru.bur.dto;
 
-import ru.bur.domain.AppUser;
+import ru.bur.domain.db.tables.pojos.AppUser;
 
 public class MapperAppUserDto {
 

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import ru.bur.domain.AppUser;
+import ru.bur.domain.db.tables.pojos.AppUser;
 import ru.bur.service.AppUserService;
 import ru.bur.session.ThreadLocalCurrentUser;
 
@@ -43,7 +43,7 @@ public class InitThreadLocalFilter implements Filter {
 
         Cookie[] cookies = rq.getCookies();
         if (isCookiesCorrect(cookies) == false) {
-            rs.sendError(HttpStatus.BAD_REQUEST.value(), "Не найдена cookie с именем "+ USER_TOKEN_COOKIES);
+            rs.sendError(HttpStatus.BAD_REQUEST.value(), "Не найдена cookie с именем " + USER_TOKEN_COOKIES);
             return;
         }
 

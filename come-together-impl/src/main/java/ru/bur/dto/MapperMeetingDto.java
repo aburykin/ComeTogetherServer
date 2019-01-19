@@ -1,6 +1,7 @@
 package ru.bur.dto;
 
-import ru.bur.domain.Meeting;
+
+import ru.bur.domain.db.tables.pojos.Meeting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class MapperMeetingDto {
 
     public static MeetingDto toDto(Meeting meeting) {
         MeetingDto dto = new MeetingDto();
-        dto.setId(meeting.getId());
+        dto.setId(meeting.getMeetingId());
         dto.setName(meeting.getName());
         dto.setPlace(meeting.getPlace());
         dto.setDescription(meeting.getDescription());
@@ -18,7 +19,7 @@ public class MapperMeetingDto {
 
     public static Meeting toModel(MeetingDto dto) {
         Meeting meeting = new Meeting();
-        meeting.setId(dto.getId());
+        meeting.setMeetingId(dto.getId());
         meeting.setName(dto.getName());
         meeting.setPlace(dto.getPlace());
         meeting.setDescription(dto.getDescription());

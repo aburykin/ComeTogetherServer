@@ -1,22 +1,17 @@
 package ru.bur.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import ru.bur.domain.Meeting;
+import org.jooq.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import ru.bur.domain.db.tables.daos.MeetingDao;
 
-import java.util.List;
+@Repository
+public class MeetingRepository extends MeetingDao {
 
-/**
- * Created by Alexander Ushakov on 05.11.2018.
- */
-
-@RepositoryRestResource
-public interface MeetingRepository extends CrudRepository<Meeting, Long> {
-
-    @Override
-    List<Meeting> findAll();
-
-    @Override
-    Meeting save(Meeting meeting);
+    @Autowired
+    public MeetingRepository(Configuration configuration) {
+        super(configuration);
+    }
 
 }
+

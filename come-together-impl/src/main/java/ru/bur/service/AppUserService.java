@@ -2,8 +2,8 @@ package ru.bur.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.bur.domain.AppUser;
-import ru.bur.repository.UserRepository;
+import ru.bur.domain.db.tables.pojos.AppUser;
+import ru.bur.repository.AppUserRepository;
 
 /**
  * Created by Sasha on 26.11.2018.
@@ -12,22 +12,22 @@ import ru.bur.repository.UserRepository;
 public class AppUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private AppUserRepository appUserRepository;
 
     public AppUser userAuth(String phoneNumber) {
-        AppUser appUser = userRepository.findByPhoneNumber(phoneNumber);
+        AppUser appUser = appUserRepository.findOneByPhoneNumber(phoneNumber);
         if (appUser == null) {
-            // создаем в базе нового польвателя и присваиваем ем token
             appUser = new AppUser();
             appUser.setPhoneNumber(phoneNumber);
             appUser.setAuthorizationToken(phoneNumber + "TOKEN");
-            appUser = userRepository.save(appUser);
+            appUserRepository.insert(appUser);
         }
         return appUser;
     }
 
-    public AppUser getAppUserByToken(String token){
-        AppUser appUser = userRepository.findByAuthorizationToken(token);
+    public AppUser getAppUserByToken(String token) {
+        AppUser appUser = appUserRepository.findOneByAuthorizationToken(token);
         return appUser;
     }
+
 }

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>come-together-server</artifactId>
+        <groupId>ru.bur.come-together</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>come-together-db</artifactId>
+
+
+    <properties>
+        <test.db.url>jdbc:postgresql://127.0.0.1:5432/test_db</test.db.url>
+        <test.db.username>mr_test</test.db.username>
+        <test.db.password>test</test.db.password>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>3.10.8</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>db-drop-first</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <dropFirst>true</dropFirst>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>3.10.8</version>
+
+                <!-- The plugin should hook into the generate goal -->
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <!-- Manage the plugin's dependency. In this example, we'll use a PostgreSQL database -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.2.2</version>
+                    </dependency>
+                </dependencies>
+
+                <!-- Specify the plugin configuration. The configuration format is the same as for the standalone code generator -->
+                <configuration>
+                    <jdbc>
+                        <url>${test.db.url}</url>
+                        <user>${test.db.username}</user>
+                        <password>${test.db.password}</password>
+                        <driver>org.postgresql.Driver</driver>
+                    </jdbc>
+
+                    <generator>
+                        <database>
+                            <name>org.jooq.util.postgres.PostgresDatabase</name>
+                            <includes>.*</includes>
+                            <excludes/>
+                            <inputSchema>base_schema</inputSchema>
+                        </database>
+                        <target>
+                            <directory>${basedir}/src/main/java</directory>
+                            <packageName>ru.bur.domain.db</packageName>
+                        </target>
+                        <generate>
+                            <daos>true</daos>
+                        </generate>
+                    </generator>
+                </configuration>
+            </plugin>
+
+
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <changeLogFile>/src/main/resources/liquibase/master.xml</changeLogFile>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>${test.db.url}</url>
+                    <username>${test.db.username}</username>
+                    <password>${test.db.password}</password>
+
+                    <outputDefaultSchema>true</outputDefaultSchema>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <defaultSchemaName>base_schema</defaultSchemaName>
+                    <changelogSchemaName>liqubase_schema</changelogSchemaName>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <id>update_cometogether_schema</id>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
