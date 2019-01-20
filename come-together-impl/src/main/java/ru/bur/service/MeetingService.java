@@ -13,12 +13,16 @@ public class MeetingService {
     @Autowired
     private MeetingRepository meetingRepository;
 
+    @Autowired
+    private MeetingUserHrefService meetingUserHrefService;
+
     public List<Meeting> findAll() {
         return meetingRepository.findAll();
     }
 
     public Meeting create(Meeting meeting) {
         meetingRepository.insert(meeting);
+        meetingUserHrefService.createMeetingUserHref(meeting);
         return meeting;
     }
 }

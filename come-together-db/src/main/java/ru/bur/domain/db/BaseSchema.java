@@ -17,6 +17,7 @@ import org.jooq.impl.SchemaImpl;
 
 import ru.bur.domain.db.tables.AppUser;
 import ru.bur.domain.db.tables.Meeting;
+import ru.bur.domain.db.tables.MeetingUserHref;
 
 
 /**
@@ -32,7 +33,7 @@ import ru.bur.domain.db.tables.Meeting;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class BaseSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = 250590593;
+    private static final long serialVersionUID = 1866452826;
 
     /**
      * The reference instance of <code>base_schema</code>
@@ -48,6 +49,11 @@ public class BaseSchema extends SchemaImpl {
      * Встречи
      */
     public final Meeting MEETING = ru.bur.domain.db.tables.Meeting.MEETING;
+
+    /**
+     * Участники встречи
+     */
+    public final MeetingUserHref MEETING_USER_HREF = ru.bur.domain.db.tables.MeetingUserHref.MEETING_USER_HREF;
 
     /**
      * No further instances allowed
@@ -74,7 +80,9 @@ public class BaseSchema extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.MEETING_MEETING_ID_SEQ);
+            Sequences.APP_USER_APP_USER_ID_SEQ,
+            Sequences.MEETING_MEETING_ID_SEQ,
+            Sequences.MEETING_USER_HREF_MEETING_USER_HREF_ID_SEQ);
     }
 
     @Override
@@ -87,6 +95,7 @@ public class BaseSchema extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             AppUser.APP_USER,
-            Meeting.MEETING);
+            Meeting.MEETING,
+            MeetingUserHref.MEETING_USER_HREF);
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Schema;
@@ -39,7 +40,7 @@ import ru.bur.domain.db.tables.records.AppUserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AppUser extends TableImpl<AppUserRecord> {
 
-    private static final long serialVersionUID = 1404734295;
+    private static final long serialVersionUID = -667204406;
 
     /**
      * The reference instance of <code>base_schema.app_user</code>
@@ -55,9 +56,9 @@ public class AppUser extends TableImpl<AppUserRecord> {
     }
 
     /**
-     * The column <code>base_schema.app_user.user_id</code>.
+     * The column <code>base_schema.app_user.app_user_id</code>.
      */
-    public final TableField<AppUserRecord, Long> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
+    public final TableField<AppUserRecord, Long> APP_USER_ID = createField("app_user_id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('base_schema.app_user_app_user_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
 
     /**
      * The column <code>base_schema.app_user.phone_number</code>.
@@ -131,7 +132,15 @@ public class AppUser extends TableImpl<AppUserRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.APP_USER_AUTHORIZATION_TOKEN_UINDEX, Indexes.APP_USER_PHONE_NUMBER_UINDEX, Indexes.APP_USER_PK, Indexes.APP_USER_USER_ID_UINDEX);
+        return Arrays.<Index>asList(Indexes.APP_USER_APP_USER_ID_UINDEX, Indexes.APP_USER_AUTHORIZATION_TOKEN_UINDEX, Indexes.APP_USER_PHONE_NUMBER_UINDEX, Indexes.APP_USER_PKEY);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Identity<AppUserRecord, Long> getIdentity() {
+        return Keys.IDENTITY_APP_USER;
     }
 
     /**
@@ -139,7 +148,7 @@ public class AppUser extends TableImpl<AppUserRecord> {
      */
     @Override
     public UniqueKey<AppUserRecord> getPrimaryKey() {
-        return Keys.APP_USER_PK;
+        return Keys.APP_USER_PKEY;
     }
 
     /**
@@ -147,7 +156,7 @@ public class AppUser extends TableImpl<AppUserRecord> {
      */
     @Override
     public List<UniqueKey<AppUserRecord>> getKeys() {
-        return Arrays.<UniqueKey<AppUserRecord>>asList(Keys.APP_USER_PK);
+        return Arrays.<UniqueKey<AppUserRecord>>asList(Keys.APP_USER_PKEY);
     }
 
     /**

@@ -24,7 +24,17 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
+     * The sequence <code>base_schema.app_user_app_user_id_seq</code>
+     */
+    public static final Sequence<Long> APP_USER_APP_USER_ID_SEQ = new SequenceImpl<Long>("app_user_app_user_id_seq", BaseSchema.BASE_SCHEMA, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>base_schema.meeting_meeting_id_seq</code>
      */
     public static final Sequence<Long> MEETING_MEETING_ID_SEQ = new SequenceImpl<Long>("meeting_meeting_id_seq", BaseSchema.BASE_SCHEMA, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>base_schema.meeting_user_href_meeting_user_href_id_seq</code>
+     */
+    public static final Sequence<Long> MEETING_USER_HREF_MEETING_USER_HREF_ID_SEQ = new SequenceImpl<Long>("meeting_user_href_meeting_user_href_id_seq", BaseSchema.BASE_SCHEMA, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 }

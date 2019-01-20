@@ -4,12 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.bur.domain.db.tables.pojos.AppUser;
 import ru.bur.domain.db.tables.pojos.Meeting;
 import ru.bur.dto.MapperMeetingDto;
 import ru.bur.dto.MeetingDto;
 import ru.bur.service.MeetingService;
-import ru.bur.session.ThreadLocalCurrentUser;
 
 import java.util.List;
 
@@ -30,8 +28,6 @@ public class MeetingController {
 
     @PostMapping
     public MeetingDto createMeeting(@RequestBody MeetingDto meetingDto) {
-        AppUser appUser = ThreadLocalCurrentUser.getAppUser();
-
         Meeting meeting = MapperMeetingDto.toModel(meetingDto);
         Meeting result = meetingService.create(meeting);
         return MapperMeetingDto.toDto(result);

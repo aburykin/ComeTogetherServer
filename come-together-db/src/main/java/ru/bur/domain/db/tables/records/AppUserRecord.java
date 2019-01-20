@@ -30,19 +30,19 @@ import ru.bur.domain.db.tables.AppUser;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements Record7<Long, String, String, String, Integer, Integer, Timestamp> {
 
-    private static final long serialVersionUID = -1472114408;
+    private static final long serialVersionUID = 907444165;
 
     /**
-     * Setter for <code>base_schema.app_user.user_id</code>.
+     * Setter for <code>base_schema.app_user.app_user_id</code>.
      */
-    public void setUserId(Long value) {
+    public void setAppUserId(Long value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>base_schema.app_user.user_id</code>.
+     * Getter for <code>base_schema.app_user.app_user_id</code>.
      */
-    public Long getUserId() {
+    public Long getAppUserId() {
         return (Long) get(0);
     }
 
@@ -167,7 +167,7 @@ public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements
      */
     @Override
     public Field<Long> field1() {
-        return AppUser.APP_USER.USER_ID;
+        return AppUser.APP_USER.APP_USER_ID;
     }
 
     /**
@@ -223,7 +223,7 @@ public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements
      */
     @Override
     public Long component1() {
-        return getUserId();
+        return getAppUserId();
     }
 
     /**
@@ -279,7 +279,7 @@ public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements
      */
     @Override
     public Long value1() {
-        return getUserId();
+        return getAppUserId();
     }
 
     /**
@@ -335,7 +335,7 @@ public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements
      */
     @Override
     public AppUserRecord value1(Long value) {
-        setUserId(value);
+        setAppUserId(value);
         return this;
     }
 
@@ -422,10 +422,10 @@ public class AppUserRecord extends UpdatableRecordImpl<AppUserRecord> implements
     /**
      * Create a detached, initialised AppUserRecord
      */
-    public AppUserRecord(Long userId, String phoneNumber, String authorizationToken, String firstName, Integer lastName, Integer age, Timestamp birthdayDate) {
+    public AppUserRecord(Long appUserId, String phoneNumber, String authorizationToken, String firstName, Integer lastName, Integer age, Timestamp birthdayDate) {
         super(AppUser.APP_USER);
 
-        set(0, userId);
+        set(0, appUserId);
         set(1, phoneNumber);
         set(2, authorizationToken);
         set(3, firstName);

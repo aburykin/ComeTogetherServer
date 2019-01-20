@@ -12,6 +12,7 @@ import org.jooq.impl.Internal;
 
 import ru.bur.domain.db.tables.AppUser;
 import ru.bur.domain.db.tables.Meeting;
+import ru.bur.domain.db.tables.MeetingUserHref;
 
 
 /**
@@ -31,23 +32,25 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index APP_USER_APP_USER_ID_UINDEX = Indexes0.APP_USER_APP_USER_ID_UINDEX;
     public static final Index APP_USER_AUTHORIZATION_TOKEN_UINDEX = Indexes0.APP_USER_AUTHORIZATION_TOKEN_UINDEX;
     public static final Index APP_USER_PHONE_NUMBER_UINDEX = Indexes0.APP_USER_PHONE_NUMBER_UINDEX;
-    public static final Index APP_USER_PK = Indexes0.APP_USER_PK;
-    public static final Index APP_USER_USER_ID_UINDEX = Indexes0.APP_USER_USER_ID_UINDEX;
+    public static final Index APP_USER_PKEY = Indexes0.APP_USER_PKEY;
     public static final Index MEETING_MEETING_ID_UINDEX = Indexes0.MEETING_MEETING_ID_UINDEX;
-    public static final Index MEETING_PK = Indexes0.MEETING_PK;
+    public static final Index MEETING_PKEY = Indexes0.MEETING_PKEY;
+    public static final Index MEETING_USER_HREF_PKEY = Indexes0.MEETING_USER_HREF_PKEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
+        public static Index APP_USER_APP_USER_ID_UINDEX = Internal.createIndex("app_user_app_user_id_uindex", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.APP_USER_ID }, true);
         public static Index APP_USER_AUTHORIZATION_TOKEN_UINDEX = Internal.createIndex("app_user_authorization_token_uindex", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.AUTHORIZATION_TOKEN }, true);
         public static Index APP_USER_PHONE_NUMBER_UINDEX = Internal.createIndex("app_user_phone_number_uindex", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.PHONE_NUMBER }, true);
-        public static Index APP_USER_PK = Internal.createIndex("app_user_pk", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.USER_ID }, true);
-        public static Index APP_USER_USER_ID_UINDEX = Internal.createIndex("app_user_user_id_uindex", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.USER_ID }, true);
+        public static Index APP_USER_PKEY = Internal.createIndex("app_user_pkey", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.APP_USER_ID }, true);
         public static Index MEETING_MEETING_ID_UINDEX = Internal.createIndex("meeting_meeting_id_uindex", Meeting.MEETING, new OrderField[] { Meeting.MEETING.MEETING_ID }, true);
-        public static Index MEETING_PK = Internal.createIndex("meeting_pk", Meeting.MEETING, new OrderField[] { Meeting.MEETING.MEETING_ID }, true);
+        public static Index MEETING_PKEY = Internal.createIndex("meeting_pkey", Meeting.MEETING, new OrderField[] { Meeting.MEETING.MEETING_ID }, true);
+        public static Index MEETING_USER_HREF_PKEY = Internal.createIndex("meeting_user_href_pkey", MeetingUserHref.MEETING_USER_HREF, new OrderField[] { MeetingUserHref.MEETING_USER_HREF.MEETING_USER_HREF_ID }, true);
     }
 }

@@ -48,21 +48,21 @@ public class AppUserDao extends DAOImpl<AppUserRecord, ru.bur.domain.db.tables.p
      */
     @Override
     protected Long getId(ru.bur.domain.db.tables.pojos.AppUser object) {
-        return object.getUserId();
+        return object.getAppUserId();
     }
 
     /**
-     * Fetch records that have <code>user_id IN (values)</code>
+     * Fetch records that have <code>app_user_id IN (values)</code>
      */
-    public List<ru.bur.domain.db.tables.pojos.AppUser> fetchByUserId(Long... values) {
-        return fetch(AppUser.APP_USER.USER_ID, values);
+    public List<ru.bur.domain.db.tables.pojos.AppUser> fetchByAppUserId(Long... values) {
+        return fetch(AppUser.APP_USER.APP_USER_ID, values);
     }
 
     /**
-     * Fetch a unique record that has <code>user_id = value</code>
+     * Fetch a unique record that has <code>app_user_id = value</code>
      */
-    public ru.bur.domain.db.tables.pojos.AppUser fetchOneByUserId(Long value) {
-        return fetchOne(AppUser.APP_USER.USER_ID, value);
+    public ru.bur.domain.db.tables.pojos.AppUser fetchOneByAppUserId(Long value) {
+        return fetchOne(AppUser.APP_USER.APP_USER_ID, value);
     }
 
     /**

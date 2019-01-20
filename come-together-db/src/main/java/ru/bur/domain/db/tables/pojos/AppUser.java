@@ -23,9 +23,9 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AppUser implements Serializable {
 
-    private static final long serialVersionUID = 102929729;
+    private static final long serialVersionUID = 820115166;
 
-    private Long      userId;
+    private Long      appUserId;
     private String    phoneNumber;
     private String    authorizationToken;
     private String    firstName;
@@ -36,7 +36,7 @@ public class AppUser implements Serializable {
     public AppUser() {}
 
     public AppUser(AppUser value) {
-        this.userId = value.userId;
+        this.appUserId = value.appUserId;
         this.phoneNumber = value.phoneNumber;
         this.authorizationToken = value.authorizationToken;
         this.firstName = value.firstName;
@@ -46,7 +46,7 @@ public class AppUser implements Serializable {
     }
 
     public AppUser(
-        Long      userId,
+        Long      appUserId,
         String    phoneNumber,
         String    authorizationToken,
         String    firstName,
@@ -54,7 +54,7 @@ public class AppUser implements Serializable {
         Integer   age,
         Timestamp birthdayDate
     ) {
-        this.userId = userId;
+        this.appUserId = appUserId;
         this.phoneNumber = phoneNumber;
         this.authorizationToken = authorizationToken;
         this.firstName = firstName;
@@ -63,12 +63,12 @@ public class AppUser implements Serializable {
         this.birthdayDate = birthdayDate;
     }
 
-    public Long getUserId() {
-        return this.userId;
+    public Long getAppUserId() {
+        return this.appUserId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setAppUserId(Long appUserId) {
+        this.appUserId = appUserId;
     }
 
     public String getPhoneNumber() {
@@ -123,7 +123,7 @@ public class AppUser implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder("AppUser (");
 
-        sb.append(userId);
+        sb.append(appUserId);
         sb.append(", ").append(phoneNumber);
         sb.append(", ").append(authorizationToken);
         sb.append(", ").append(firstName);

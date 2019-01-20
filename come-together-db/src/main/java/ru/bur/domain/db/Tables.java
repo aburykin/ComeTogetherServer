@@ -8,6 +8,7 @@ import javax.annotation.Generated;
 
 import ru.bur.domain.db.tables.AppUser;
 import ru.bur.domain.db.tables.Meeting;
+import ru.bur.domain.db.tables.MeetingUserHref;
 
 
 /**
@@ -32,4 +33,9 @@ public class Tables {
      * Встречи
      */
     public static final Meeting MEETING = ru.bur.domain.db.tables.Meeting.MEETING;
+
+    /**
+     * Участники встречи
+     */
+    public static final MeetingUserHref MEETING_USER_HREF = ru.bur.domain.db.tables.MeetingUserHref.MEETING_USER_HREF;
 }

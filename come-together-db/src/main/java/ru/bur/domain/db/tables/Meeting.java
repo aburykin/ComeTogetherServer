@@ -40,7 +40,7 @@ import ru.bur.domain.db.tables.records.MeetingRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Meeting extends TableImpl<MeetingRecord> {
 
-    private static final long serialVersionUID = -1270207903;
+    private static final long serialVersionUID = 36815301;
 
     /**
      * The reference instance of <code>base_schema.meeting</code>
@@ -122,7 +122,7 @@ public class Meeting extends TableImpl<MeetingRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.MEETING_MEETING_ID_UINDEX, Indexes.MEETING_PK);
+        return Arrays.<Index>asList(Indexes.MEETING_MEETING_ID_UINDEX, Indexes.MEETING_PKEY);
     }
 
     /**
@@ -138,7 +138,7 @@ public class Meeting extends TableImpl<MeetingRecord> {
      */
     @Override
     public UniqueKey<MeetingRecord> getPrimaryKey() {
-        return Keys.MEETING_PK;
+        return Keys.MEETING_PKEY;
     }
 
     /**
@@ -146,7 +146,7 @@ public class Meeting extends TableImpl<MeetingRecord> {
      */
     @Override
     public List<UniqueKey<MeetingRecord>> getKeys() {
-        return Arrays.<UniqueKey<MeetingRecord>>asList(Keys.MEETING_PK);
+        return Arrays.<UniqueKey<MeetingRecord>>asList(Keys.MEETING_PKEY);
     }
 
     /**
