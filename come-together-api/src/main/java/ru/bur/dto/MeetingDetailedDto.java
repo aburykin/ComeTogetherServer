@@ -6,9 +6,8 @@ import lombok.Data;
  * Created by Alexander Ushakov on 05.11.2018.
  */
 @Data
-public class MeetingDetailedDto {
+public class MeetingDetailedDto extends MeetingDto{
 
-    private MeetingDto meeting;
-    private String description;
+    private Long userOwnerId;
 
 }

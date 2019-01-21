@@ -8,14 +8,16 @@ import ru.bur.domain.db.tables.pojos.MeetingUserHref;
 import ru.bur.repository.MeetingUserHrefRepository;
 import ru.bur.session.ThreadLocalCurrentUser;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MeetingUserHrefService {
 
     @Autowired
     private MeetingUserHrefRepository meetingUserHrefRepository;
 
-
-    public void createMeetingUserHref(Meeting meeting){
+    public void createMeetingUserHref(Meeting meeting) {
         AppUser appUser = ThreadLocalCurrentUser.getAppUser();
 
         MeetingUserHref href = new MeetingUserHref();
@@ -25,4 +27,11 @@ public class MeetingUserHrefService {
         meetingUserHrefRepository.insert(href);
     }
 
+
+    public List<Long> findMeetingOwners(Long meetingId) {
+        return meetingUserHrefRepository.fetchByMeetingId(meetingId).stream()
+                .filter(MeetingUserHref::getIsOrganizer)
+                .map(MeetingUserHref::getAppUserId)
+                .collect(Collectors.toList());
+    }
 }

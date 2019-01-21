@@ -8,6 +8,7 @@ import ru.bur.domain.db.tables.pojos.Meeting;
 import ru.bur.dto.MapperMeetingDto;
 import ru.bur.dto.MeetingDto;
 import ru.bur.service.MeetingService;
+import ru.bur.service.MeetingUserHrefService;
 
 import java.util.List;
 
@@ -19,12 +20,14 @@ public class MeetingController {
 
     @Autowired
     private MeetingService meetingService;
+    @Autowired
+
+    private MeetingUserHrefService meetingUserHrefService;
 
     @GetMapping
     public List<MeetingDto> getAllMeetings() {
         return MapperMeetingDto.toListDto(meetingService.findAll());
     }
-
 
     @PostMapping
     public MeetingDto createMeeting(@RequestBody MeetingDto meetingDto) {
@@ -32,5 +35,11 @@ public class MeetingController {
         Meeting result = meetingService.create(meeting);
         return MapperMeetingDto.toDto(result);
     }
+
+    @GetMapping("/{meetingId}/owners")
+    public List<Long> getMeetingOwners(@PathVariable(name = "meetingId") Long meetingId) {
+        return meetingUserHrefService.findMeetingOwners(meetingId);
+    }
+
 
 }

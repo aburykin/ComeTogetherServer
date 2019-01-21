@@ -10,7 +10,7 @@ public class MapperMeetingDto {
 
     public static MeetingDto toDto(Meeting meeting) {
         MeetingDto dto = new MeetingDto();
-        dto.setId(meeting.getMeetingId());
+        dto.setMeetingId(meeting.getMeetingId());
         dto.setName(meeting.getName());
         dto.setPlace(meeting.getPlace());
         dto.setDescription(meeting.getDescription());
@@ -19,7 +19,7 @@ public class MapperMeetingDto {
 
     public static Meeting toModel(MeetingDto dto) {
         Meeting meeting = new Meeting();
-        meeting.setMeetingId(dto.getId());
+        meeting.setMeetingId(dto.getMeetingId());
         meeting.setName(dto.getName());
         meeting.setPlace(dto.getPlace());
         meeting.setDescription(dto.getDescription());

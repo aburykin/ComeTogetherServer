@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class MeetingDto {
 
-    private Long id;
+    private Long meetingId;
     private String name;
     private String place;
     private String description;
