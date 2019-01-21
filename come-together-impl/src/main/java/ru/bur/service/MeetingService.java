@@ -25,4 +25,10 @@ public class MeetingService {
         meetingUserHrefService.createMeetingUserHref(meeting);
         return meeting;
     }
+
+    public void deleteMeeting(Long meetingId) {
+        meetingUserHrefService.deleteMeetingUserHref(meetingId);
+        meetingRepository.deleteById(meetingId);
+    }
+
 }

@@ -42,4 +42,8 @@ public class MeetingController {
     }
 
 
+    @DeleteMapping("/{meetingId}")
+    public void deleteMeeting(@PathVariable(name = "meetingId") Long meetingId) {
+        meetingService.deleteMeeting(meetingId);
+    }
 }

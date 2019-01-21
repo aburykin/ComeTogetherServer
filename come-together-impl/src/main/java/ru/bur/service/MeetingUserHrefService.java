@@ -34,4 +34,8 @@ public class MeetingUserHrefService {
                 .map(MeetingUserHref::getAppUserId)
                 .collect(Collectors.toList());
     }
+
+    public void deleteMeetingUserHref(Long meetingId) {
+        meetingUserHrefRepository.delete(meetingUserHrefRepository.fetchByMeetingId(meetingId));
+    }
 }
