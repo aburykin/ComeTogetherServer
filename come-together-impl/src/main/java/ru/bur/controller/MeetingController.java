@@ -24,16 +24,10 @@ public class MeetingController {
 
     private MeetingUserHrefService meetingUserHrefService;
 
+
     @GetMapping
     public List<MeetingDto> getAllMeetings() {
         return MapperMeetingDto.toListDto(meetingService.findAll());
-    }
-
-    @PostMapping
-    public MeetingDto createMeeting(@RequestBody MeetingDto meetingDto) {
-        Meeting meeting = MapperMeetingDto.toModel(meetingDto);
-        Meeting result = meetingService.create(meeting);
-        return MapperMeetingDto.toDto(result);
     }
 
     @GetMapping("/{meetingId}/owners")
@@ -41,6 +35,16 @@ public class MeetingController {
         return meetingUserHrefService.findMeetingOwners(meetingId);
     }
 
+    @PostMapping
+    public MeetingDto saveMeeting(@RequestBody MeetingDto meetingDto) {
+        Meeting meeting = MapperMeetingDto.toModel(meetingDto);
+        return MapperMeetingDto.toDto(meetingService.create(meeting));
+    }
+    @PutMapping
+    public MeetingDto updateMeeting(@RequestBody MeetingDto meetingDto) {
+        Meeting meeting = MapperMeetingDto.toModel(meetingDto);
+        return MapperMeetingDto.toDto(meetingService.update(meeting));
+    }
 
     @DeleteMapping("/{meetingId}")
     public void deleteMeeting(@PathVariable(name = "meetingId") Long meetingId) {

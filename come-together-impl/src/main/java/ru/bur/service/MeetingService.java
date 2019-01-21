@@ -26,6 +26,12 @@ public class MeetingService {
         return meeting;
     }
 
+    public Meeting update(Meeting meeting) {
+        meetingRepository.update(meeting);
+        return meeting;
+    }
+
+
     public void deleteMeeting(Long meetingId) {
         meetingUserHrefService.deleteMeetingUserHref(meetingId);
         meetingRepository.deleteById(meetingId);
