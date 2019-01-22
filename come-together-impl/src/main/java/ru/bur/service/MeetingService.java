@@ -35,7 +35,6 @@ public class MeetingService {
         return meeting;
     }
 
-
     public void deleteMeeting(Long meetingId) {
         meetingUserHrefService.deleteMeetingUserHref(meetingId);
         meetingRepository.deleteById(meetingId);

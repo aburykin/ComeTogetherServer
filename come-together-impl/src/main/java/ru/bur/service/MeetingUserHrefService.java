@@ -19,14 +19,13 @@ public class MeetingUserHrefService {
 
     public void createMeetingUserHref(Meeting meeting) {
         AppUser appUser = ThreadLocalCurrentUser.getAppUser();
-        System.out.println("createMeetingUserHref(): appUser="+appUser);
+        System.out.println("createMeetingUserHref(): appUser=" + appUser);
         MeetingUserHref href = new MeetingUserHref();
         href.setMeetingId(meeting.getMeetingId());
         href.setAppUserId(appUser.getAppUserId());
         href.setIsOrganizer(true);
         meetingUserHrefRepository.insert(href);
     }
-
 
     public List<Long> findMeetingOwners(Long meetingId) {
         return meetingUserHrefRepository.fetchByMeetingId(meetingId).stream()
@@ -35,7 +34,25 @@ public class MeetingUserHrefService {
                 .collect(Collectors.toList());
     }
 
+    public List<Long> findMeetingParticipants(Long meetingId) {
+        return meetingUserHrefRepository.fetchByMeetingId(meetingId).stream()
+                .map(MeetingUserHref::getAppUserId)
+                .collect(Collectors.toList());
+    }
+
+
     public void deleteMeetingUserHref(Long meetingId) {
         meetingUserHrefRepository.delete(meetingUserHrefRepository.fetchByMeetingId(meetingId));
+    }
+
+    public void addParticipant(Long meetingId, Long appUserId) {
+        List<Long> meetingParticipants = findMeetingParticipants(meetingId);
+        if (!meetingParticipants.contains(appUserId)) {
+            MeetingUserHref href = new MeetingUserHref();
+            href.setMeetingId(meetingId);
+            href.setAppUserId(appUserId);
+            href.setIsOrganizer(false);
+            meetingUserHrefRepository.insert(href);
+        }
     }
 }

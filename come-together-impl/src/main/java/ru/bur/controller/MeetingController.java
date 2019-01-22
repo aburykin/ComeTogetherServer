@@ -16,14 +16,13 @@ import java.util.List;
 @RequestMapping("/rest/meetings")
 public class MeetingController {
 
-    private final static Logger log = LoggerFactory.getLogger(MeetingController.class);
+    private final Logger log = LoggerFactory.getLogger(MeetingController.class);
 
     @Autowired
     private MeetingService meetingService;
+
     @Autowired
-
     private MeetingUserHrefService meetingUserHrefService;
-
 
     @GetMapping
     public List<MeetingDto> getAllMeetings() {
@@ -33,6 +32,11 @@ public class MeetingController {
     @GetMapping("/{meetingId}/owners")
     public List<Long> getMeetingOwners(@PathVariable(name = "meetingId") Long meetingId) {
         return meetingUserHrefService.findMeetingOwners(meetingId);
+    }
+
+    @GetMapping("/{meetingId}/participants")
+    public List<Long> getMeetingParticipants(@PathVariable(name = "meetingId") Long meetingId) {
+        return meetingUserHrefService.findMeetingParticipants(meetingId);
     }
 
     @GetMapping("/{meetingId}")
@@ -56,4 +60,11 @@ public class MeetingController {
     public void deleteMeeting(@PathVariable(name = "meetingId") Long meetingId) {
         meetingService.deleteMeeting(meetingId);
     }
+
+    @PostMapping("/{meetingId}/participants/{appUserId}")
+    public void addParticipantToMeeting(@PathVariable(name = "meetingId") Long meetingId,
+                                        @PathVariable(name = "appUserId") Long appUserId) {
+        meetingUserHrefService.addParticipant(meetingId,appUserId);
+    }
+
 }
