@@ -19,7 +19,7 @@ public class MeetingUserHrefService {
 
     public void createMeetingUserHref(Meeting meeting) {
         AppUser appUser = ThreadLocalCurrentUser.getAppUser();
-
+        System.out.println("createMeetingUserHref(): appUser="+appUser);
         MeetingUserHref href = new MeetingUserHref();
         href.setMeetingId(meeting.getMeetingId());
         href.setAppUserId(appUser.getAppUserId());

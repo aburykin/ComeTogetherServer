@@ -20,6 +20,10 @@ public class MeetingService {
         return meetingRepository.findAll();
     }
 
+    public Meeting getMeeting(Long meetingId){
+        return meetingRepository.findById(meetingId);
+    }
+
     public Meeting create(Meeting meeting) {
         meetingRepository.insert(meeting);
         meetingUserHrefService.createMeetingUserHref(meeting);

@@ -35,11 +35,17 @@ public class MeetingController {
         return meetingUserHrefService.findMeetingOwners(meetingId);
     }
 
+    @GetMapping("/{meetingId}")
+    public MeetingDto getMeeting(@PathVariable(name = "meetingId") Long meetingId) {
+        return MapperMeetingDto.toDto(meetingService.getMeeting(meetingId));
+    }
+
     @PostMapping
-    public MeetingDto saveMeeting(@RequestBody MeetingDto meetingDto) {
+    public MeetingDto createMeeting(@RequestBody MeetingDto meetingDto) {
         Meeting meeting = MapperMeetingDto.toModel(meetingDto);
         return MapperMeetingDto.toDto(meetingService.create(meeting));
     }
+
     @PutMapping
     public MeetingDto updateMeeting(@RequestBody MeetingDto meetingDto) {
         Meeting meeting = MapperMeetingDto.toModel(meetingDto);

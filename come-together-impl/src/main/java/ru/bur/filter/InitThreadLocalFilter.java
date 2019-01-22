@@ -30,12 +30,6 @@ public class InitThreadLocalFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse rs = (HttpServletResponse) response;
 
-        AppUser appUser = ThreadLocalCurrentUser.getAppUser();
-        if (appUser != null) {
-            chain.doFilter(request, response);
-            return;
-        }
-
         HttpServletRequest rq = (HttpServletRequest) request;
         if (rq.getCookies() == null) {
             throw new RuntimeException("Не найдены cookies.");
@@ -47,7 +41,7 @@ public class InitThreadLocalFilter implements Filter {
             return;
         }
 
-
+        AppUser appUser = null;
         for (Cookie cookie : cookies) {
             if (USER_TOKEN_COOKIES.equals(cookie.getName())) {
                 appUser = appUserService.getAppUserByToken(cookie.getValue());
