@@ -67,4 +67,10 @@ public class MeetingController {
         meetingUserHrefService.addParticipant(meetingId,appUserId);
     }
 
+    @DeleteMapping("/{meetingId}/participants/{appUserId}")
+    public void deleteParticipantFromMeeting(@PathVariable(name = "meetingId") Long meetingId,
+                                        @PathVariable(name = "appUserId") Long appUserId) {
+        meetingUserHrefService.deleteParticipant(meetingId,appUserId);
+    }
+
 }

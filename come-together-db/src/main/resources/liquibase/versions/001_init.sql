@@ -38,3 +38,5 @@ create table base_schema.meeting_user_href
 comment on table base_schema.meeting_user_href is 'Участники встречи';
 comment on column base_schema.meeting_user_href.is_organizer is 'Если true, то этот участник является ораганизатором встречи';
 
+
+ALTER TABLE ONLY  base_schema.meeting_user_href ADD CONSTRAINT meeting_id_app_user_id_key UNIQUE (meeting_id,app_user_id);

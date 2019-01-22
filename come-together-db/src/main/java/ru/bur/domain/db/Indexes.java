@@ -38,6 +38,7 @@ public class Indexes {
     public static final Index APP_USER_PKEY = Indexes0.APP_USER_PKEY;
     public static final Index MEETING_MEETING_ID_UINDEX = Indexes0.MEETING_MEETING_ID_UINDEX;
     public static final Index MEETING_PKEY = Indexes0.MEETING_PKEY;
+    public static final Index MEETING_ID_APP_USER_ID_KEY = Indexes0.MEETING_ID_APP_USER_ID_KEY;
     public static final Index MEETING_USER_HREF_PKEY = Indexes0.MEETING_USER_HREF_PKEY;
 
     // -------------------------------------------------------------------------
@@ -51,6 +52,7 @@ public class Indexes {
         public static Index APP_USER_PKEY = Internal.createIndex("app_user_pkey", AppUser.APP_USER, new OrderField[] { AppUser.APP_USER.APP_USER_ID }, true);
         public static Index MEETING_MEETING_ID_UINDEX = Internal.createIndex("meeting_meeting_id_uindex", Meeting.MEETING, new OrderField[] { Meeting.MEETING.MEETING_ID }, true);
         public static Index MEETING_PKEY = Internal.createIndex("meeting_pkey", Meeting.MEETING, new OrderField[] { Meeting.MEETING.MEETING_ID }, true);
+        public static Index MEETING_ID_APP_USER_ID_KEY = Internal.createIndex("meeting_id_app_user_id_key", MeetingUserHref.MEETING_USER_HREF, new OrderField[] { MeetingUserHref.MEETING_USER_HREF.MEETING_ID, MeetingUserHref.MEETING_USER_HREF.APP_USER_ID }, true);
         public static Index MEETING_USER_HREF_PKEY = Internal.createIndex("meeting_user_href_pkey", MeetingUserHref.MEETING_USER_HREF, new OrderField[] { MeetingUserHref.MEETING_USER_HREF.MEETING_USER_HREF_ID }, true);
     }
 }

@@ -48,6 +48,7 @@ public class Keys {
     public static final UniqueKey<AppUserRecord> APP_USER_PKEY = UniqueKeys0.APP_USER_PKEY;
     public static final UniqueKey<MeetingRecord> MEETING_PKEY = UniqueKeys0.MEETING_PKEY;
     public static final UniqueKey<MeetingUserHrefRecord> MEETING_USER_HREF_PKEY = UniqueKeys0.MEETING_USER_HREF_PKEY;
+    public static final UniqueKey<MeetingUserHrefRecord> MEETING_ID_APP_USER_ID_KEY = UniqueKeys0.MEETING_ID_APP_USER_ID_KEY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -70,6 +71,7 @@ public class Keys {
         public static final UniqueKey<AppUserRecord> APP_USER_PKEY = Internal.createUniqueKey(AppUser.APP_USER, "app_user_pkey", AppUser.APP_USER.APP_USER_ID);
         public static final UniqueKey<MeetingRecord> MEETING_PKEY = Internal.createUniqueKey(Meeting.MEETING, "meeting_pkey", Meeting.MEETING.MEETING_ID);
         public static final UniqueKey<MeetingUserHrefRecord> MEETING_USER_HREF_PKEY = Internal.createUniqueKey(MeetingUserHref.MEETING_USER_HREF, "meeting_user_href_pkey", MeetingUserHref.MEETING_USER_HREF.MEETING_USER_HREF_ID);
+        public static final UniqueKey<MeetingUserHrefRecord> MEETING_ID_APP_USER_ID_KEY = Internal.createUniqueKey(MeetingUserHref.MEETING_USER_HREF, "meeting_id_app_user_id_key", MeetingUserHref.MEETING_USER_HREF.MEETING_ID, MeetingUserHref.MEETING_USER_HREF.APP_USER_ID);
     }
 
     private static class ForeignKeys0 {

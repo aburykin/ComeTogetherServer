@@ -40,7 +40,7 @@ import ru.bur.domain.db.tables.records.MeetingUserHrefRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class MeetingUserHref extends TableImpl<MeetingUserHrefRecord> {
 
-    private static final long serialVersionUID = 653079037;
+    private static final long serialVersionUID = 1747783401;
 
     /**
      * The reference instance of <code>base_schema.meeting_user_href</code>
@@ -117,7 +117,7 @@ public class MeetingUserHref extends TableImpl<MeetingUserHrefRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.MEETING_USER_HREF_PKEY);
+        return Arrays.<Index>asList(Indexes.MEETING_ID_APP_USER_ID_KEY, Indexes.MEETING_USER_HREF_PKEY);
     }
 
     /**
@@ -141,7 +141,7 @@ public class MeetingUserHref extends TableImpl<MeetingUserHrefRecord> {
      */
     @Override
     public List<UniqueKey<MeetingUserHrefRecord>> getKeys() {
-        return Arrays.<UniqueKey<MeetingUserHrefRecord>>asList(Keys.MEETING_USER_HREF_PKEY);
+        return Arrays.<UniqueKey<MeetingUserHrefRecord>>asList(Keys.MEETING_USER_HREF_PKEY, Keys.MEETING_ID_APP_USER_ID_KEY);
     }
 
     /**
