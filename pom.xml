@@ -3,18 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.bur.come-together</groupId>
-    <artifactId>come-together-server</artifactId>
+    <groupId>ru.bur.life-offline</groupId>
+    <artifactId>life-offline-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>come-together-server</name>
-    <description>Come together server</description>
+    <name>life-offline-server</name>
+    <description>Life Offline Server</description>
 
     <modules>
-        <module>come-together-db</module>
-        <module>come-together-api</module>
-        <module>come-together-impl</module>
+        <module>life-offline-db</module>
+        <module>life-offline-api</module>
+        <module>life-offline-impl</module>
     </modules>
 
     <parent>

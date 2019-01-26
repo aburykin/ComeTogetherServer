@@ -13,6 +13,7 @@ public class MapperMeetingDetailedDto {
         dto.setName(model.getName());
         dto.setPlace(model.getPlace());
         dto.setDescription(model.getDescription());
+        dto.setStartDate(model.getStartDate());
 
         dto.setUserOwnerId(model.getUserOwnerId());
         return dto;
@@ -23,6 +24,7 @@ public class MapperMeetingDetailedDto {
         model.setMeetingId(dto.getMeetingId());
         model.setName(dto.getName());
         model.setPlace(dto.getPlace());
+        model.setStartDate(dto.getStartDate());
         model.setDescription(dto.getDescription());
 
         model.setUserOwnerId(dto.getUserOwnerId());

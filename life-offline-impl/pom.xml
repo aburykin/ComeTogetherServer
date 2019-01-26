@@ -4,27 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.bur.come-together</groupId>
-    <artifactId>come-together-impl</artifactId>
+    <groupId>ru.bur.life-offline</groupId>
+    <artifactId>life-offline-impl</artifactId>
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>ru.bur</groupId>
-        <artifactId>come-together-server</artifactId>
+        <groupId>ru.bur.life-offline</groupId>
+        <artifactId>life-offline-server</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
 
         <dependency>
-            <groupId>ru.bur.come-together</groupId>
-            <artifactId>come-together-api</artifactId>
+            <groupId>ru.bur.life-offline</groupId>
+            <artifactId>life-offline-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>ru.bur.come-together</groupId>
-            <artifactId>come-together-db</artifactId>
+            <groupId>ru.bur.life-offline</groupId>
+            <artifactId>life-offline-db</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>come-together-server</artifactId>
-        <groupId>ru.bur.come-together</groupId>
+        <artifactId>life-offline-server</artifactId>
+        <groupId>ru.bur.life-offline</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>come-together-db</artifactId>
+    <artifactId>life-offline-db</artifactId>
 
 
     <properties>
