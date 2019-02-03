@@ -3,6 +3,7 @@ package ru.bur.dto;
 
 import ru.bur.domain.db.tables.pojos.Meeting;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class MapperMeetingDto {
         dto.setMeetingId(meeting.getMeetingId());
         dto.setName(meeting.getName());
         dto.setPlace(meeting.getPlace());
-        dto.setStartDate(meeting.getStartDate());
+        dto.setStartDateTime(meeting.getStartDate().getTime());
         dto.setDescription(meeting.getDescription());
         return dto;
     }
@@ -23,7 +24,7 @@ public class MapperMeetingDto {
         meeting.setMeetingId(dto.getMeetingId());
         meeting.setName(dto.getName());
         meeting.setPlace(dto.getPlace());
-        meeting.setStartDate(dto.getStartDate());
+        meeting.setStartDate(new Timestamp(dto.getStartDateTime()));
         meeting.setDescription(dto.getDescription());
         return meeting;
     }

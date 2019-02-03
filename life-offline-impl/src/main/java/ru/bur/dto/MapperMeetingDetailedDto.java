@@ -2,6 +2,7 @@ package ru.bur.dto;
 
 import ru.bur.model.MeetingDetailed;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,7 @@ public class MapperMeetingDetailedDto {
         dto.setName(model.getName());
         dto.setPlace(model.getPlace());
         dto.setDescription(model.getDescription());
-        dto.setStartDate(model.getStartDate());
-
+        dto.setStartDateTime(model.getStartDate().getTime());
         dto.setUserOwnerId(model.getUserOwnerId());
         return dto;
     }
@@ -24,7 +24,7 @@ public class MapperMeetingDetailedDto {
         model.setMeetingId(dto.getMeetingId());
         model.setName(dto.getName());
         model.setPlace(dto.getPlace());
-        model.setStartDate(dto.getStartDate());
+        model.setStartDate(new Timestamp(dto.getStartDateTime()));
         model.setDescription(dto.getDescription());
 
         model.setUserOwnerId(dto.getUserOwnerId());
