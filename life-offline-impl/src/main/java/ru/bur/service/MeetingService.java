@@ -20,6 +20,16 @@ public class MeetingService {
         return meetingRepository.findAll();
     }
 
+    public List<Meeting> getFirstNmeetings() {
+        return meetingRepository.getFirstNmeetings();
+    }
+
+
+    public List<Meeting> getNextMeetings(Meeting lastMeeting) {
+        return meetingRepository.getNextMeetings(lastMeeting);
+    }
+
+
     public Meeting getMeeting(Long meetingId){
         return meetingRepository.findById(meetingId);
     }

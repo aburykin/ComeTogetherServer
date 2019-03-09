@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.bur.domain.db.Tables;
 import ru.bur.domain.db.tables.daos.MeetingDao;
-import ru.bur.model.MeetingDetailed;
+import ru.bur.domain.db.tables.pojos.Meeting;
 
+import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -22,21 +26,38 @@ public class MeetingRepository extends MeetingDao {
     @Autowired
     private DSLContext dslContext;
 
-    /*
-    public List<MeetingDetailed> findAllMeetingDetailed() {
-        return dslContext.select(
-                Tables.MEETING.MEETING_ID,
-                Tables.MEETING.NAME,
-                Tables.MEETING.PLACE,
-                Tables.MEETING.START_DATE,
-                Tables.MEETING.DESCRIPTION,
-                Tables.MEETING_USER_HREF.APP_USER_ID.as("user_owner_id")
-        ).from(Tables.MEETING)
-                .join(Tables.MEETING_USER_HREF).on(Tables.MEETING.MEETING_ID.eq(Tables.MEETING_USER_HREF.MEETING_ID))
-                .where(Tables.MEETING_USER_HREF.IS_ORGANIZER.eq(true)).fetchInto(MeetingDetailed.class);
-    }
-    */
+    private int AMOUNT_ROWS_FOR_MORE_LOADTING = 10;
 
+    /**
+     * @return
+     */
+    public List<Meeting> getFirstNmeetings() {
+     //   Timestamp currentTimeInUtc = Timestamp.valueOf(LocalDateTime.now(Clock.systemUTC()).minusHours(3L));
+        Timestamp currentTimeInUtc = Timestamp.valueOf(LocalDateTime.now().minusHours(3L));
+        return dslContext.selectFrom(Tables.MEETING)
+                .where(Tables.MEETING.START_DATE.greaterOrEqual(currentTimeInUtc))
+                .orderBy(Tables.MEETING.START_DATE.asc())
+                .unionAll(dslContext.selectFrom(Tables.MEETING)
+                        .where(Tables.MEETING.START_DATE.lessThan(currentTimeInUtc))
+                        .orderBy(Tables.MEETING.START_DATE.desc()))
+                .maxRows(AMOUNT_ROWS_FOR_MORE_LOADTING)
+                .fetchInto(Meeting.class);
+    }
+
+    /**
+     * получить список завершенных встреч, отсортированных по дате
+     *
+     * @param lastMeeting - Начиная с этой записи выбираются следующие N записей;
+     * @return
+     */
+    public List<Meeting> getNextMeetings(@NotNull Meeting lastMeeting) {
+        Timestamp currentTimeInUtc = lastMeeting.getStartDate();
+        return dslContext.selectFrom(Tables.MEETING)
+                .where(Tables.MEETING.START_DATE.greaterOrEqual(currentTimeInUtc))
+                .orderBy(Tables.MEETING.START_DATE.asc())
+                .maxRows(AMOUNT_ROWS_FOR_MORE_LOADTING)
+                .fetchInto(Meeting.class);
+    }
 
 }
 

@@ -24,10 +24,23 @@ public class MeetingController {
     @Autowired
     private MeetingUserHrefService meetingUserHrefService;
 
+    /**
+     * Возвращает первые N записей для показа первого экрана
+     */
     @GetMapping
-    public List<MeetingDto> getAllMeetings() {
-        return MapperMeetingDto.toListDto(meetingService.findAll());
+    public List<MeetingDto> getFirstNmeatings() {
+        return MapperMeetingDto.toListDto(meetingService.getFirstNmeetings());
     }
+
+    /**
+     * Возращает следующие N встреч, относительно указанной встречи
+     */
+    @PostMapping("/next")
+    public List<MeetingDto> getNextMeetings(@RequestBody MeetingDto lastMeetingDto) {
+        List<Meeting> meetings = meetingService.getNextMeetings(MapperMeetingDto.toModel(lastMeetingDto));
+        return MapperMeetingDto.toListDto(meetings);
+    }
+
 
     @GetMapping("/{meetingId}/owners")
     public List<Long> getMeetingOwners(@PathVariable(name = "meetingId") Long meetingId) {
@@ -64,13 +77,13 @@ public class MeetingController {
     @PostMapping("/{meetingId}/participants/{appUserId}")
     public void addParticipantToMeeting(@PathVariable(name = "meetingId") Long meetingId,
                                         @PathVariable(name = "appUserId") Long appUserId) {
-        meetingUserHrefService.addParticipant(meetingId,appUserId);
+        meetingUserHrefService.addParticipant(meetingId, appUserId);
     }
 
     @DeleteMapping("/{meetingId}/participants/{appUserId}")
     public void deleteParticipantFromMeeting(@PathVariable(name = "meetingId") Long meetingId,
-                                        @PathVariable(name = "appUserId") Long appUserId) {
-        meetingUserHrefService.deleteParticipant(meetingId,appUserId);
+                                             @PathVariable(name = "appUserId") Long appUserId) {
+        meetingUserHrefService.deleteParticipant(meetingId, appUserId);
     }
 
 }
