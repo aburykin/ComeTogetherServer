@@ -2,6 +2,7 @@ package ru.bur.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.bur.domain.db.tables.pojos.AppUser;
 import ru.bur.domain.db.tables.pojos.Meeting;
 import ru.bur.repository.MeetingRepository;
 
@@ -28,6 +29,12 @@ public class MeetingService {
     public List<Meeting> getNextMeetings(Meeting lastMeeting) {
         return meetingRepository.getNextMeetings(lastMeeting);
     }
+
+    public List<Meeting> getMeetingsFilteredByUser(AppUser appUser) {
+        List<Long> listMeetingId = meetingUserHrefService.findByAppUser(appUser);
+        return meetingRepository.fetchByMeetingId(listMeetingId.toArray(new Long[listMeetingId.size()]));
+    }
+
 
 
     public Meeting getMeeting(Long meetingId){

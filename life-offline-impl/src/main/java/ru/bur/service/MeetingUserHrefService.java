@@ -33,6 +33,18 @@ public class MeetingUserHrefService {
         meetingUserHrefRepository.insert(href);
     }
 
+    /**
+     *
+     * @param appUser
+     * @return список meeatingId, в которых участвует пользователь
+     */
+    public List<Long> findByAppUser(AppUser appUser) {
+        return meetingUserHrefRepository.fetchByAppUserId(appUser.getAppUserId())
+                .stream()
+                .map(MeetingUserHref::getMeetingId)
+                .collect(Collectors.toList());
+    }
+
     public List<Long> findMeetingOwners(Long meetingId) {
         return meetingUserHrefRepository.fetchByMeetingId(meetingId).stream()
                 .filter(MeetingUserHref::getIsOrganizer)
