@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import ru.bur.domain.db.tables.AppUser;
 import ru.bur.domain.db.tables.Meeting;
 import ru.bur.domain.db.tables.MeetingUserHref;
+import ru.bur.domain.db.tables.Notification;
 
 
 /**
@@ -38,4 +39,9 @@ public class Tables {
      * Участники встречи
      */
     public static final MeetingUserHref MEETING_USER_HREF = ru.bur.domain.db.tables.MeetingUserHref.MEETING_USER_HREF;
+
+    /**
+     * Уведомления, пользователи проверяют эту таблицу на наличия уведомлений об изменении встреч.
+     */
+    public static final Notification NOTIFICATION = ru.bur.domain.db.tables.Notification.NOTIFICATION;
 }

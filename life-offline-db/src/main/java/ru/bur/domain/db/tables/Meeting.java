@@ -40,7 +40,7 @@ import ru.bur.domain.db.tables.records.MeetingRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Meeting extends TableImpl<MeetingRecord> {
 
-    private static final long serialVersionUID = 36815301;
+    private static final long serialVersionUID = 1502784454;
 
     /**
      * The reference instance of <code>base_schema.meeting</code>
@@ -122,7 +122,7 @@ public class Meeting extends TableImpl<MeetingRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.MEETING_MEETING_ID_UINDEX, Indexes.MEETING_PKEY);
+        return Arrays.<Index>asList(Indexes.MEETING_PKEY);
     }
 
     /**

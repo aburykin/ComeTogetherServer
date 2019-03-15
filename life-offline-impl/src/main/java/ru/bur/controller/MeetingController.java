@@ -10,6 +10,7 @@ import ru.bur.dto.MapperMeetingDto;
 import ru.bur.dto.MeetingDto;
 import ru.bur.service.MeetingService;
 import ru.bur.service.MeetingUserHrefService;
+import ru.bur.service.NotificationService;
 import ru.bur.session.ThreadLocalCurrentUser;
 
 import java.util.List;

@@ -17,14 +17,13 @@ public class MeetingService {
     @Autowired
     private MeetingUserHrefService meetingUserHrefService;
 
-    public List<Meeting> findAll() {
-        return meetingRepository.findAll();
-    }
+    @Autowired
+    private NotificationService notificationService;
+
 
     public List<Meeting> getFirstNmeetings() {
         return meetingRepository.getFirstNmeetings();
     }
-
 
     public List<Meeting> getNextMeetings(Meeting lastMeeting) {
         return meetingRepository.getNextMeetings(lastMeeting);
@@ -35,9 +34,7 @@ public class MeetingService {
         return meetingRepository.fetchByMeetingId(listMeetingId.toArray(new Long[listMeetingId.size()]));
     }
 
-
-
-    public Meeting getMeeting(Long meetingId){
+    public Meeting getMeeting(Long meetingId) {
         return meetingRepository.findById(meetingId);
     }
 
@@ -49,12 +46,14 @@ public class MeetingService {
 
     public Meeting update(Meeting meeting) {
         meetingRepository.update(meeting);
+        notificationService.createNotificationsForMeeting(meeting.getMeetingId());
         return meeting;
     }
 
     public void deleteMeeting(Long meetingId) {
         meetingUserHrefService.deleteMeetingUserHref(meetingId);
         meetingRepository.deleteById(meetingId);
+        notificationService.createNotificationsForMeeting(meetingId);
     }
 
 }

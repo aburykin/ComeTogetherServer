@@ -37,4 +37,9 @@ public class Sequences {
      * The sequence <code>base_schema.meeting_user_href_meeting_user_href_id_seq</code>
      */
     public static final Sequence<Long> MEETING_USER_HREF_MEETING_USER_HREF_ID_SEQ = new SequenceImpl<Long>("meeting_user_href_meeting_user_href_id_seq", BaseSchema.BASE_SCHEMA, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>base_schema.notification_notification_id_seq</code>
+     */
+    public static final Sequence<Long> NOTIFICATION_NOTIFICATION_ID_SEQ = new SequenceImpl<Long>("notification_notification_id_seq", BaseSchema.BASE_SCHEMA, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 }
